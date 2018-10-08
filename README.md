@@ -54,6 +54,7 @@ In this case, that would have to be done inside the “room”-object itself, in
 
 * 5: [Errorprone-report] In 2 instances, the report also states similar to issue nr. 1, that  
 >“DU - Anomaly: A recently defined variable is undefined. These anomalies may appear in >normal source text.”
+
 PMD is specifically stating that the splitString[] that we are using in conjunction with reading the users input, is “a recently defined variable, that is now undefined.”
 
 ---
@@ -61,8 +62,11 @@ PMD is specifically stating that the splitString[] that we are using in conjunc
 * 6: [Errorprone-report] in 4 instances, PMD is warning
 > “Avoid using Literals  in Conditional Statements”
 This is due to us using literal variables, change/sets its content and performs different actions depending on the content of the string or int, or comparing to a literal or int variable.
+
 An example would be when the program check an else if statement 
+
 > else if (endGamecode == 2)
+
 According to PMD, we should not be checking against the 2, but a method or state instead. This could be avoided by using a boolean or enum for larger and more complex conditions.
 
 ---
@@ -72,7 +76,9 @@ According to PMD, we should not be checking against the 2, but a method or state
 
 This issue has some similarities to the ones found in issue 3, which was presented in the errorprone-report.
 
-PMD defines the issue as:  >To avoid mistakes if we want that a Method, Constructor, Field or Nested class have a >default access modifier we must add a comment at the beginning of it’s declaration.
+PMD defines the issue as:
+
+>To avoid mistakes if we want that a Method, Constructor, Field or Nested class have a >default access modifier we must add a comment at the beginning of it’s declaration.
 
 While the issues is mostly focused on writing comments for all variables (even those singles ones declared in the code), the issue also has similarities to the issue, that a few variables don’t use a methods for accessing the properties, such as get/set-methods, but we are instead directly manipulating and changing the values in the variables. This is highly regarded as unsafe and it should be avoided by using accessors, to also make the code easier to read.
 
@@ -84,13 +90,15 @@ So not only is this type of issue “errorprone”, but also a “codestyle”-i
 > “Avoid if (x != y) ..; else ..;”
 
 According to PMD, this should avoided by:
+
 >Avoid negation within an “if” expression with an “else” clause. For example, rephrase:
-> if (x != y) diff(); else same(); as: if (x == y) same(); else diff();.
->Most “if (x != y)” cases without an “else” are often return cases, so consistent use of this >rule makes the code easier to read. Also, this resolves trivial ordering problems, such as >“does the error case go first?” or “does the common case go first?”.
+if (x != y) diff(); else same(); as: if (x == y) same(); else diff();.
+Most “if (x != y)” cases without an “else” are often return cases, so consistent use of this >rule makes the code easier to read. Also, this resolves trivial ordering problems, such as >“does the error case go first?” or “does the common case go first?”.
 
 The 2 issues identified by the “Codestyle”-report, are both “if”-statements that are nested inside a “else if”-statement. Both cases also don’t end with a direct “return”-statement, but neither does A LOT of the other “if”-statements.
 
 The issue is also raising the warning that the code shouldn’t check for the situation in which the case is not equal to the desired result, but should instead check if the result matches the expected result. So instead of 
+
 > if(x!=y)
 
 it should be more like 
@@ -102,11 +110,13 @@ This is also done to make the code more readable, as the if-else structure in th
 ---
 
 * 9: [Practices-report] In 27 instances, the PMD report for “Best Practices” warned about:
+
 >Position literals first in String comparisons for EqualsIgnoreCase 
 
 Because the program is a text-based dungeon adventure game, it is not only important, but essential for the game to accurately read the user text input, analyze it and perform the correct action, since this is the only way of interacting with the game.
 
 As an example of how we handle equalIgnoreCase can be found on line 1189:
+
 >input.equalsIgnoreCase("Help")
 
 However, the “correct way” according to PMD would be to: >Position literals first in comparisons, if the second argument is null then >NullPointerExceptions can be avoided, they will just return false.
