@@ -18,7 +18,7 @@ The following reports were generated on the “GameControl”-java file and the 
 [Errorprone-report] 
 
 A lot errors with the description 
->”DD - Anomaly: A recently defined variable is redefined. This is ominous but don’t have to >be a bug.”
+>”DD - Anomaly: A recently defined variable is redefined. This is ominous but don’t have to be a bug.”
 
 One of the reasons this problem is shown, is because that rooms are assigned/connected to each other, after the fact that the room-objects have been individually initialized earlier in the startup of the project. I assume that PMD is warning about changing an objects properties, after the object have been initialized and that doing that is a bad practice that can lead to error prone code.
 This problem is found in over 80 instances in the report.
