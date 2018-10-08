@@ -121,17 +121,22 @@ Is it easier to read? I think it’s very hard to decide and comes down to perso
 
 * 10: [Practices-report] While “System.out.println is used” in only 1 instance on line 1371, it’s an instance that is constantly reused over and over again, in order to communicate to the player what is going through text. 
 
-According to PMD:  > References to System.(out|err).print are usually intended for debugging purposes and can > remain in the codebase even in production code. By using a logger one can enable/disable > this behaviour at will (and by priority) and avoid clogging the Standard out log.
- The project is not interactive through any GUI, and thus the player has to read the output from the console, meaning the project needs to use the System.out.println()
+According to PMD:
+> References to System.(out|err).print are usually intended for debugging purposes and can > remain in the codebase even in production code. By using a logger one can enable/disable > this behaviour at will (and by priority) and avoid clogging the Standard out log.
+
+The project is not interactive through any GUI, and thus the player has to read the output from the console, meaning the project needs to use the System.out.println()
 
 So this is an issue that can’t be fixed, because the project and functionality of the project actually depends on it. 
 
-Other minor issues wort mentioning:
-[CodeStyle-report] Avoid excessively long variable names like percentageOfAttack
-[CodeStyle-report] Useless parentheses 
-[CodeStyle-report] Parameter ‘X’ is not assigned and could be declared final.
-[CodeStyle-report] Local variable ‘X’ could be declared final.
+---
 
+Other minor issues wort mentioning:
+* [CodeStyle-report] Avoid excessively long variable names like percentageOfAttack
+* [CodeStyle-report] Useless parentheses 
+* [CodeStyle-report] Parameter ‘X’ is not assigned and could be declared final.
+* [CodeStyle-report] Local variable ‘X’ could be declared final.
+
+---
 
 ### Why did I chose the 10 above issues?
 * Looking at the results, especially from the errorprone-report covered in issues 1-6, a lot of potential issues that occurred multiple times (even over 80, 100 and 150 in some instances!) was exposed and that could lead to potential issues, bugs or misunderstandings in the future. I believed it was therefore important to go a bit deeper to understand why those errors occurred and how to best avoid them in the future. This is why I pretty much covered all the issues found in errorprone-report, because the volume and amount of the same kind of issue was so huge and the most commen, that I had to address it.
