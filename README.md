@@ -12,6 +12,8 @@ The following reports were generated on the “GameControl”-java file and the 
 * errorprone - 397 problems
 * security - 0 problems
 
+---
+
 * 1: [Errorprone-report] A lot errors with the description 
 >”DD - Anomaly: A recently defined variable is redefined. This is ominous but don’t have to >be a bug.”
 
