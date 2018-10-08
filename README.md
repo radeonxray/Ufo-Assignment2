@@ -93,7 +93,7 @@ According to PMD, we should not be checking against the 2, but a method or state
 [Codestyle-report] 
 
 In 3 instances, the report for codestyle warns about 
->“To avoid mistakes add a comment at the beginning of the room1 field if you want a default >access modifier”
+>“To avoid mistakes add a comment at the beginning of the room1 field if you want a default access modifier”
 
 This issue has some similarities to the ones found in issue 3, which was presented in the errorprone-report.
 
