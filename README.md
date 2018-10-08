@@ -58,7 +58,10 @@ A lot of the variables that are initialized int he beginning of the code, does n
 * 4
 [Errorprone-report] 
 
-Duplicate literals occurs about 20 times, with the problem message >“The String literal “[String]” appears X times in this file; the first occurrence is on line XX”.
+Duplicate literals occurs about 20 times, with the message 
+
+>“The String literal “[String]” appears X times in this file; the first occurrence is on line XX”.
+
 Essentially, the problem is simple warning against objects that contains duplicate strings, which in this situation is due to rooms some time containing the same description text in a string, such as “Corridor”, which occurs 40 times. Without knowing which room# this “corridor” have been assigned to, it could easily become very hard and difficult to navigate the code and assign/connect the rooms correctly (but even this was also originally done in conjunction with a map of the dungeons layout that I had drawn).
 PMD recommends that:
 
@@ -72,7 +75,7 @@ In this case, that would have to be done inside the “room”-object itself, in
 [Errorprone-report] 
 
 In 2 instances, the report also states similar to issue nr. 1, that  
->“DU - Anomaly: A recently defined variable is undefined. These anomalies may appear in >normal source text.”
+>“DU - Anomaly: A recently defined variable is undefined. These anomalies may appear in normal source text.”
 
 PMD is specifically stating that the splitString[] that we are using in conjunction with reading the users input, is “a recently defined variable, that is now undefined.”
 
