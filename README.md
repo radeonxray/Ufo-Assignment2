@@ -179,7 +179,7 @@ Other minor issues worth mentioning:
 ---
 
 ### Why did I chose the 10 above issues?
-* Looking at the results, especially from the errorprone-report covered in issues 1-6, a lot of potential issues that occurred multiple times (even over 80, 100 and 150 in some instances!) was exposed and that could lead to potential issues, bugs or misunderstandings in the future. I believed it was therefore important to go a bit deeper to understand why those errors occurred and how to best avoid them in the future. This is why I pretty much covered all the issues found in errorprone-report, because the volume and amount of the same kind of issue was so huge and the most commen, that I had to address it.
+Looking at the results, especially from the errorprone-report covered in issues 1-6, a lot of potential issues that occurred multiple times (even over 80, 100 and 150 in some instances!) was exposed and that could lead to potential issues, bugs or misunderstandings in the future. I believed it was therefore important to go a bit deeper to understand why those errors occurred and how to best avoid them in the future. This is why I pretty much covered all the issues found in errorprone-report, because the volume and amount of the same kind of issue was so huge and the most commen, that I had to address it.
 
 A thing that surprised me, was that the same kind of issues could show up in multiple reports, such as issue 3 and 7, which deals with the topic of “methods, variables and accessors”, which was alerted to me in the “errorprone”- and the “codestyle”-report.
 
