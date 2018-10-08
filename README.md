@@ -1,6 +1,4 @@
 # Ufo-Assignment2
-Ufo assignment 2 for CBA
-Problems from the error prone report:
 
 ### Exercise 1
 Chose to run PMD on an old 1 semester JAVA text-adventure dungeon game. Specifically, PMD was run on the “GameControl”-java file found in the control folder, which handles all the logistics of the game and that consist of over 1000+ lines of code. The project was originally writing by 3 people: Myself (Christian), Bjørn and Hannibal, in a periode of about 3 weeks if I remember correctly.
