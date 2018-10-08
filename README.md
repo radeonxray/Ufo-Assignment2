@@ -20,6 +20,8 @@ The following reports were generated on the “GameControl”-java file and the 
 One of the reasons this problem is shown, is because that rooms are assigned/connected to each other, after the fact that the room-objects have been individually initialized earlier in the startup of the project. I assume that PMD is warning about changing an objects properties, after the object have been initialized and that doing that is a bad practice that can lead to error prone code.
 This problem is found in over 80 instances in the report.
 
+---
+
 * 2: [Errorprone-report] With over 150 instances, the 
 >“Assigning an Object to null is a code smell. Consider refactoring.” 
 
@@ -30,11 +32,15 @@ According the PMD:
 
 While PMD has a point with programmers using null as a “end point/dead end, because we don’t know what to do from here”, in this case, the game-engine actually uses the null as a key-word to responds to the players actions correctly. A potential solution to this issue, would be to create a string keyword and use that instead of the reserved null keyword.
 
+---
+
 * 3: [Errorprone-report] With over 100 instances, the 
 >“Found non-transient, non-static member. Please mark as transient or provide accessors.” is about 
 >“Member variables need to be marked as transient, static, or have accessor methods in the class.”
 
 A lot of the variables that are initialized int he beginning of the code, does not have the correct accessors, nor are they set as static, transient or serializable. It’s important to note though, that about 90% of the instances of the problem is due to the initializing of each individual room and only a few other variables, such as “highScore”, “item”, “player” etc.  The problem could easily be avoided by (as mentioned earlier) creating get/set-methods for all the variables and access the variable and objects through those, instead of accessing them directly.
+
+---
 
 * 4: [Errorprone-report] Duplicate literals occurs about 20 times, with the problem message >“The String literal “[String]” appears X times in this file; the first occurrence is on line XX”.
 Essentially, the problem is simple warning against objects that contains duplicate strings, which in this situation is due to rooms some time containing the same description text in a string, such as “Corridor”, which occurs 40 times. Without knowing which room# this “corridor” have been assigned to, it could easily become very hard and difficult to navigate the code and assign/connect the rooms correctly (but even this was also originally done in conjunction with a map of the dungeons layout that I had drawn).
@@ -44,9 +50,13 @@ PMD recommends that:
 
 In this case, that would have to be done inside the “room”-object itself, in order to fix the “problem”, but it doesn’t seem like a critical error.
 
+---
+
 * 5: [Errorprone-report] In 2 instances, the report also states similar to issue nr. 1, that  
 >“DU - Anomaly: A recently defined variable is undefined. These anomalies may appear in >normal source text.”
 PMD is specifically stating that the splitString[] that we are using in conjunction with reading the users input, is “a recently defined variable, that is now undefined.”
+
+---
 
 * 6: [Errorprone-report] in 4 instances, PMD is warning
 > “Avoid using Literals  in Conditional Statements”
@@ -54,6 +64,8 @@ This is due to us using literal variables, change/sets its content and performs 
 An example would be when the program check an else if statement 
 > else if (endGamecode == 2)
 According to PMD, we should not be checking against the 2, but a method or state instead. This could be avoided by using a boolean or enum for larger and more complex conditions.
+
+---
 
 * 7: [Codestyle-report] In 3 instances, the report for codestyle warns about 
 >“To avoid mistakes add a comment at the beginning of the room1 field if you want a default >access modifier”
@@ -65,6 +77,8 @@ PMD defines the issue as:  >To avoid mistakes if we want that a Method, Cons
 While the issues is mostly focused on writing comments for all variables (even those singles ones declared in the code), the issue also has similarities to the issue, that a few variables don’t use a methods for accessing the properties, such as get/set-methods, but we are instead directly manipulating and changing the values in the variables. This is highly regarded as unsafe and it should be avoided by using accessors, to also make the code easier to read.
 
 So not only is this type of issue “errorprone”, but also a “codestyle”-issue! 
+
+---
 
 * 8:[CodeStyle-report] in 2 instances, the reports is warning about
 > “Avoid if (x != y) ..; else ..;”
@@ -85,6 +99,8 @@ it should be more like
 
 This is also done to make the code more readable, as the if-else structure in the (x!=y) first has to handle the case in which the statement is true and then in the “else”-part where the (x!=y) is not true. Basically, the code is currently handling the “error”/“failure”-situation first, rather than the “succesfull”-situation.
 
+---
+
 * 9: [Practices-report] In 27 instances, the PMD report for “Best Practices” warned about:
 >Position literals first in String comparisons for EqualsIgnoreCase 
 
@@ -100,6 +116,8 @@ Meaning our little example should be refactored into:
 >“Help”.equalIgnoreCase(input)
  
 Is it easier to read? I think it’s very hard to decide and comes down to personal taste. Reading the statement the “correct”-way feels a bit off, and I’m not sure that I’m going to write code that follows the “correct way“ because it seems a bit off.
+
+---
 
 * 10: [Practices-report] While “System.out.println is used” in only 1 instance on line 1371, it’s an instance that is constantly reused over and over again, in order to communicate to the player what is going through text. 
 
