@@ -140,7 +140,7 @@ So this is an issue that can’t be fixed, because the project and functionality
 
 ---
 
-Other minor issues wort mentioning:
+Other minor issues worth mentioning:
 * [CodeStyle-report] Avoid excessively long variable names like percentageOfAttack
 * [CodeStyle-report] Useless parentheses 
 * [CodeStyle-report] Parameter ‘X’ is not assigned and could be declared final.
