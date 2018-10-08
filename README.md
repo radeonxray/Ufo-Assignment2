@@ -14,7 +14,10 @@ The following reports were generated on the “GameControl”-java file and the 
 
 ---
 
-* 1: [Errorprone-report] A lot errors with the description 
+* 1
+[Errorprone-report] 
+
+A lot errors with the description 
 >”DD - Anomaly: A recently defined variable is redefined. This is ominous but don’t have to >be a bug.”
 
 One of the reasons this problem is shown, is because that rooms are assigned/connected to each other, after the fact that the room-objects have been individually initialized earlier in the startup of the project. I assume that PMD is warning about changing an objects properties, after the object have been initialized and that doing that is a bad practice that can lead to error prone code.
@@ -22,7 +25,10 @@ This problem is found in over 80 instances in the report.
 
 ---
 
-* 2: [Errorprone-report] With over 150 instances, the 
+* 2
+[Errorprone-report] 
+
+With over 150 instances, the 
 >“Assigning an Object to null is a code smell. Consider refactoring.” 
 
 is the most common problem found in the error-report. The reason for this problem triggering, is that when the rooms are being assigned their connecting room and if there is no room to a direction of the room (North, South East or West), the direction is assigned with a “null”, after the rooms have been initialized, and such we are changing the properties of the object. The game-engine reads “null” as a wall, and so if the player tries to walk in a direction in which there are no rooms, the game tells the player that they’ve hit a wall and and have not left the latest room.
@@ -34,7 +40,10 @@ While PMD has a point with programmers using null as a “end point/dead end, be
 
 ---
 
-* 3: [Errorprone-report] With over 100 instances, the 
+* 3
+[Errorprone-report] 
+
+With over 100 instances, the 
 >“Found non-transient, non-static member. Please mark as transient or provide accessors.” is about 
 >“Member variables need to be marked as transient, static, or have accessor methods in the class.”
 
@@ -42,7 +51,10 @@ A lot of the variables that are initialized int he beginning of the code, does n
 
 ---
 
-* 4: [Errorprone-report] Duplicate literals occurs about 20 times, with the problem message >“The String literal “[String]” appears X times in this file; the first occurrence is on line XX”.
+* 4
+[Errorprone-report] 
+
+Duplicate literals occurs about 20 times, with the problem message >“The String literal “[String]” appears X times in this file; the first occurrence is on line XX”.
 Essentially, the problem is simple warning against objects that contains duplicate strings, which in this situation is due to rooms some time containing the same description text in a string, such as “Corridor”, which occurs 40 times. Without knowing which room# this “corridor” have been assigned to, it could easily become very hard and difficult to navigate the code and assign/connect the rooms correctly (but even this was also originally done in conjunction with a map of the dungeons layout that I had drawn).
 PMD recommends that:
 
@@ -52,14 +64,20 @@ In this case, that would have to be done inside the “room”-object itself, in
 
 ---
 
-* 5: [Errorprone-report] In 2 instances, the report also states similar to issue nr. 1, that  
+* 5
+[Errorprone-report] 
+
+In 2 instances, the report also states similar to issue nr. 1, that  
 >“DU - Anomaly: A recently defined variable is undefined. These anomalies may appear in >normal source text.”
 
 PMD is specifically stating that the splitString[] that we are using in conjunction with reading the users input, is “a recently defined variable, that is now undefined.”
 
 ---
 
-* 6: [Errorprone-report] in 4 instances, PMD is warning
+* 6
+[Errorprone-report] 
+
+In 4 instances, PMD is warning
 > “Avoid using Literals  in Conditional Statements”
 This is due to us using literal variables, change/sets its content and performs different actions depending on the content of the string or int, or comparing to a literal or int variable.
 
@@ -71,7 +89,10 @@ According to PMD, we should not be checking against the 2, but a method or state
 
 ---
 
-* 7: [Codestyle-report] In 3 instances, the report for codestyle warns about 
+* 7
+[Codestyle-report] 
+
+In 3 instances, the report for codestyle warns about 
 >“To avoid mistakes add a comment at the beginning of the room1 field if you want a default >access modifier”
 
 This issue has some similarities to the ones found in issue 3, which was presented in the errorprone-report.
@@ -86,7 +107,10 @@ So not only is this type of issue “errorprone”, but also a “codestyle”-i
 
 ---
 
-* 8:[CodeStyle-report] in 2 instances, the reports is warning about
+* 8
+[CodeStyle-report] 
+
+In 2 instances, the reports is warning about
 > “Avoid if (x != y) ..; else ..;”
 
 According to PMD, this should avoided by:
@@ -109,7 +133,10 @@ This is also done to make the code more readable, as the if-else structure in th
 
 ---
 
-* 9: [Practices-report] In 27 instances, the PMD report for “Best Practices” warned about:
+* 9
+[Practices-report] 
+
+In 27 instances, the PMD report for “Best Practices” warned about:
 
 >Position literals first in String comparisons for EqualsIgnoreCase 
 
@@ -129,7 +156,10 @@ Is it easier to read? I think it’s very hard to decide and comes down to perso
 
 ---
 
-* 10: [Practices-report] While “System.out.println is used” in only 1 instance on line 1371, it’s an instance that is constantly reused over and over again, in order to communicate to the player what is going through text. 
+* 10
+[Practices-report] 
+
+While “System.out.println is used” in only 1 instance on line 1371, it’s an instance that is constantly reused over and over again, in order to communicate to the player what is going through text. 
 
 According to PMD:
 > References to System.(out|err).print are usually intended for debugging purposes and can > remain in the codebase even in production code. By using a logger one can enable/disable > this behaviour at will (and by priority) and avoid clogging the Standard out log.
