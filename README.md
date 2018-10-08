@@ -106,7 +106,7 @@ This issue has some similarities to the ones found in issue 3, which was present
 
 PMD defines the issue as:
 
->To avoid mistakes if we want that a Method, Constructor, Field or Nested class have a >default access modifier we must add a comment at the beginning of it’s declaration.
+>To avoid mistakes if we want that a Method, Constructor, Field or Nested class have a default access modifier we must add a comment at the beginning of it’s declaration.
 
 While the issues is mostly focused on writing comments for all variables (even those singles ones declared in the code), the issue also has similarities to the issue, that a few variables don’t use a methods for accessing the properties, such as get/set-methods, but we are instead directly manipulating and changing the values in the variables. This is highly regarded as unsafe and it should be avoided by using accessors, to also make the code easier to read.
 
