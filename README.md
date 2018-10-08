@@ -162,7 +162,7 @@ Is it easier to read? I think it’s very hard to decide and comes down to perso
 While “System.out.println is used” in only 1 instance on line 1371, it’s an instance that is constantly reused over and over again, in order to communicate to the player what is going through text. 
 
 According to PMD:
-> References to System.(out|err).print are usually intended for debugging purposes and can > remain in the codebase even in production code. By using a logger one can enable/disable > this behaviour at will (and by priority) and avoid clogging the Standard out log.
+> References to System.(out|err).print are usually intended for debugging purposes and can remain in the codebase even in production code. By using a logger one can enable/disable this behaviour at will (and by priority) and avoid clogging the Standard out log.
 
 The project is not interactive through any GUI, and thus the player has to read the output from the console, meaning the project needs to use the System.out.println()
 
