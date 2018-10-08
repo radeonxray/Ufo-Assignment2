@@ -191,3 +191,6 @@ A thing that surprised me, was that the same kind of issues could show up in mul
 I also wanted to give a broader view of the project, by running, studying and presenting different different PMD analysis (such at errorProne, Practices, CodeStyle etc.).
 
 Given that this PMD was run on a +2 year old project, my code writing ability and style has changed and (hopefully) improved quite a bit.
+
+---
+### Exercise 2
