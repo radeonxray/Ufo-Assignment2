@@ -20,16 +20,17 @@ This problem is found in over 80 instances in the report.
 
 * 2: [Errorprone-report] With over 150 instances, the 
 >“Assigning an Object to null is a code smell. Consider refactoring.” 
-is the most common problem found in the error-report.  The reason for this problem triggering, is that when the rooms are being assigned their connecting room and if there is no room to a direction of the room (North, South East or West), the direction is assigned with a “null”, after the rooms have been initialized, and such we are changing the properties of the object. The game-engine reads “null” as a wall, and so if the player tries to walk in a direction in which there are no rooms, the game tells the player that they’ve hit a wall and and have not left the latest room.
+
+is the most common problem found in the error-report. The reason for this problem triggering, is that when the rooms are being assigned their connecting room and if there is no room to a direction of the room (North, South East or West), the direction is assigned with a “null”, after the rooms have been initialized, and such we are changing the properties of the object. The game-engine reads “null” as a wall, and so if the player tries to walk in a direction in which there are no rooms, the game tells the player that they’ve hit a wall and and have not left the latest room.
 According the PMD:
 
->“Assigning a “null” to a variable (outside of its declaration) is usually bad form. Sometimes, >this type of assignment is an indication that the programmer doesn’t completely >understand what is going on in the code.”
+>“Assigning a “null” to a variable (outside of its declaration) is usually bad form. Sometimes, this type of assignment is an indication that the programmer doesn’t completely understand what is going on in the code.”
 
 While PMD has a point with programmers using null as a “end point/dead end, because we don’t know what to do from here”, in this case, the game-engine actually uses the null as a key-word to responds to the players actions correctly. A potential solution to this issue, would be to create a string keyword and use that instead of the reserved null keyword.
 
 * 3: [Errorprone-report] With over 100 instances, the 
 >“Found non-transient, non-static member. Please mark as transient or provide accessors.” is about 
->“Member variables need to be marked as transient, static, or have accessor methods in the >class.”
+>“Member variables need to be marked as transient, static, or have accessor methods in the class.”
 
 A lot of the variables that are initialized int he beginning of the code, does not have the correct accessors, nor are they set as static, transient or serializable. It’s important to note though, that about 90% of the instances of the problem is due to the initializing of each individual room and only a few other variables, such as “highScore”, “item”, “player” etc.  The problem could easily be avoided by (as mentioned earlier) creating get/set-methods for all the variables and access the variable and objects through those, instead of accessing them directly.
 
