@@ -44,7 +44,11 @@ While PMD has a point with programmers using null as a “end point/dead end, be
 [Errorprone-report] 
 
 With over 100 instances, the 
->“Found non-transient, non-static member. Please mark as transient or provide accessors.” is about 
+>“Found non-transient, non-static member. Please mark as transient or provide accessors.” 
+
+is about 
+
+
 >“Member variables need to be marked as transient, static, or have accessor methods in the class.”
 
 A lot of the variables that are initialized int he beginning of the code, does not have the correct accessors, nor are they set as static, transient or serializable. It’s important to note though, that about 90% of the instances of the problem is due to the initializing of each individual room and only a few other variables, such as “highScore”, “item”, “player” etc.  The problem could easily be avoided by (as mentioned earlier) creating get/set-methods for all the variables and access the variable and objects through those, instead of accessing them directly.
