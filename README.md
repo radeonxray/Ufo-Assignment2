@@ -207,6 +207,8 @@ while the fastest task is “pagination without content” by 0.010s.
 
 Upon further experimentation with the project in Netbeans, I also got the project to run the the same test inside Netbeans with the following results:
 ￼
+
+
 ![Image 2](https://github.com/radeonxray/Ufo-Assignment2/blob/master/graphqlimg/pic2.png)
 
 The results are pretty much the same, as if the test had run outside of Netbeans and through gradle itself.
