@@ -219,9 +219,12 @@ While I’ve successfully installed the gradle plugin, the profiler tool in netb
 
 Though I could get a lot of data displayed when running the profiler, none of the options seemed to have the information I was looking for:
 
+
 ￼![Image 4](https://github.com/radeonxray/Ufo-Assignment2/blob/master/graphqlimg/pic4.png)
 
+
 Not even the “main” seemed to yield any results:
+
 
 ![Image 5](https://github.com/radeonxray/Ufo-Assignment2/blob/master/graphqlimg/pic5.png)
 ￼
@@ -231,7 +234,7 @@ Going back to the gradle version 2.3 issue mentioned earlier, I was able to loca
 Upon further reading, I learned how to create a new wrapper from scratch, rather than trying to try an edit an existing one.
 
 Ran the following command:  gradle wrapper --gradle-version 4.10.2 --distribution-type all
-https://docs.gradle.org/current/userguide/gradle_wrapper.html 
+https://docs.gradle.org/current/userguide/gradle_wrapper.html
 Which replaced the existing gradle folder in the project and the the wrapper.jar and wrapper.properties file
 
 The Netbeans now successfully build the project, using gradle 4.10.2!
