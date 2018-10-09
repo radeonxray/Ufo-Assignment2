@@ -200,13 +200,14 @@ After having spent a good hour or so trying to setup the project (a lot of googl
 
 This is the result table for the StarWarsQueryExecutorTest, which is where the mentioned “find droid by name” test is located. The “executor.execute(query).data” is also run 16 times in the test script, though 17 test are completed as seen in the picture
 
-￼
+￼![Image 1](https://github.com/radeonxray/Ufo-Assignment2/blob/master/graphqlimg/pic1.png)
 
 According to the table, the slowest task is the “Gets just the names of all droids” by 0.106s,
 while the fastest task is “pagination without content” by 0.010s.
 
 Upon further experimentation with the project in Netbeans, I also got the project to run the the same test inside Netbeans with the following results:
 ￼
+![Image 2](https://github.com/radeonxray/Ufo-Assignment2/blob/master/graphqlimg/pic2.png)
 
 The results are pretty much the same, as if the test had run outside of Netbeans and through gradle itself.
 
@@ -214,12 +215,15 @@ Getting to view the project with the profiler in Netbeans however, has not yield
 
 While I’ve successfully installed the gradle plugin, the profiler tool in netbeans is greyed out and I have not been able to successfully “attach to an external project”. I have been able to connect to some kind if instance of the project, but unable to determine where in the process the project is atm., or to restart or close the “currently running projects”
 ￼
+![Image 3](https://github.com/radeonxray/Ufo-Assignment2/blob/master/graphqlimg/pic3.png)
 
 Though I could get a lot of data displayed when running the profiler, none of the options seemed to have the information I was looking for:
 
-￼
+￼![Image 4](https://github.com/radeonxray/Ufo-Assignment2/blob/master/graphqlimg/pic4.png)
 
 Not even the “main” seemed to yield any results:
+
+![Image 5](https://github.com/radeonxray/Ufo-Assignment2/blob/master/graphqlimg/pic5.png)
 ￼
 
 Going back to the gradle version 2.3 issue mentioned earlier, I was able to locate where the issue originated: From the gradle-wrapper.properties, which is set to the 2.3 version of Gradle, which gives the “deprecated“-warnings.  However, changing this to the newest version (4.10.2), kept crashing the project when trying to build it.
@@ -232,4 +236,6 @@ Which replaced the existing gradle folder in the project and the the wrapper.jar
 
 The Netbeans now successfully build the project, using gradle 4.10.2!
 
-However, this did not solve my issue with using the Profiler to inspect the gradle project
+However, this did not solve my issue with using the Profiler to inspect the gradle project.
+
+After having spent a couple of more hours on getting the gradle project to work with the profilling tools to no success, I decided to call it quit for the time being. I know I didn't get the desired results that I was expected to find, but I did manage to get some successful findings, such as getting gradle up and running in NetBeans, updating the gradle-wrapper version, and getting the test results both inside and outside of NetBeans.
