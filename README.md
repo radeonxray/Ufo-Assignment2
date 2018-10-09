@@ -194,3 +194,42 @@ Given that this PMD was run on a +2 year old project, my code writing ability an
 
 ---
 ### Exercise 2
+Tried to solve the Exercise using the graphql-jpa-example https://github.com/jcrygier/graphql-jpa
+
+After having spent a good hour or so trying to setup the project (a lot of googling, installing gradle netbeans plugin, installing gradle locally using homebrew) and reading a lot of errors messages regarding “deprecated 2.6 versions” (even though I got version 4.10.2 installed) when trying to build and clean the project, I think I succeeded in getting the test to run and see the results (found in the build -> reports -> tests -> test -> index.html).
+
+This is the result table for the StarWarsQueryExecutorTest, which is where the mentioned “find droid by name” test is located. The “executor.execute(query).data” is also run 16 times in the test script, though 17 test are completed as seen in the picture
+
+￼
+
+According to the table, the slowest task is the “Gets just the names of all droids” by 0.106s,
+while the fastest task is “pagination without content” by 0.010s.
+
+Upon further experimentation with the project in Netbeans, I also got the project to run the the same test inside Netbeans with the following results:
+￼
+
+The results are pretty much the same, as if the test had run outside of Netbeans and through gradle itself.
+
+Getting to view the project with the profiler in Netbeans however, has not yielded any results.
+
+While I’ve successfully installed the gradle plugin, the profiler tool in netbeans is greyed out and I have not been able to successfully “attach to an external project”. I have been able to connect to some kind if instance of the project, but unable to determine where in the process the project is atm., or to restart or close the “currently running projects”
+￼
+
+Though I could get a lot of data displayed when running the profiler, none of the options seemed to have the information I was looking for:
+
+￼
+
+Not even the “main” seemed to yield any results:
+￼
+
+Going back to the gradle version 2.3 issue mentioned earlier, I was able to locate where the issue originated: From the gradle-wrapper.properties, which is set to the 2.3 version of Gradle, which gives the “deprecated“-warnings.  However, changing this to the newest version (4.10.2), kept crashing the project when trying to build it.
+
+Upon further reading, I learned how to create a new wrapper from scratch, rather than trying to try an edit an existing one.
+
+Ran the following command:  gradle wrapper --gradle-version 4.10.2 --distribution-type all
+https://docs.gradle.org/current/userguide/gradle_wrapper.html 
+Which replaced the existing gradle folder in the project and the the wrapper.jar and wrapper.properties file
+
+The Netbeans now successfully build the project, using gradle 4.10.2!
+
+However, this did not solve my issue with using the Profiler to inspect the gradle project
